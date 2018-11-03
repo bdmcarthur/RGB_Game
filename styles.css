@@ -19,6 +19,7 @@ h1 {
 
 #rgb {
     font-size: 55px;
+    color: rgb(100, 125, 30)
 }
 
 #grid {
@@ -30,7 +31,6 @@ h1 {
     margin-right: auto;
 }
 .square {
-        border: 1px solid green;
         padding: 5px;
         margin: 5px;
     }
