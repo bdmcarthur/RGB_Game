@@ -7,7 +7,8 @@
 // var bg = re.style.color
 // console.log(bg)
 
-var re = document.getElementsByClassName('square')
+re = document.getElementsByClassName('square');
+element = document.querySelector(".square");
 
 function randomColor(){
     for (let i = 0; i < re.length; i++) {
@@ -23,5 +24,23 @@ function randomColor(){
 var numPick = re[index].style.backgroundColor
 var rgb = document.getElementById('rgb')
 rgb.textContent = numPick
+
+for (let i = 0; i < 6; i++) {
+re[i].addEventListener("click", function(){
+    if (numPick !== re[i].style.backgroundColor){
+        re[i].style.backgroundColor = "white"
+    }
+    else {
+        for (let i = 0; i < re.length; i++) {
+            re[i].style.backgroundColor = numPick
+        }
+    }
 }
+)
+
+}
+
+
+}
+
 randomColor()
