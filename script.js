@@ -1,46 +1,71 @@
-// var re = document.getElementById("rgb")
-// var1 = Math.random() * 255
-// var2 = Math.random() * 255
-// var3 = Math.random() * 255
-// re.style.color="rgb" + "(" + var1.toString() + "," + var2.toString() + "," + var3.toString() + ")"
-//
-// var bg = re.style.color
-// console.log(bg)
 
-re = document.getElementsByClassName('square');
-element = document.querySelector(".square");
+square = document.querySelectorAll('.square');
+tagline = document.getElementById('tagline');
+heading = document.getElementById('heading');
+button = document.querySelector('button')
+var coArr = colorPicker();
+var answer = answerNum();
 
-function randomColor(){
-    for (let i = 0; i < re.length; i++) {
-    var index = Math.floor((Math.random() * 5) + 1)
-      re[0].style.backgroundColor = "rgb" + "(" + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + ")"
-      re[1].style.backgroundColor = "rgb" + "(" + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + ")"
-      re[2].style.backgroundColor = "rgb" + "(" + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + ")"
-      re[3].style.backgroundColor = "rgb" + "(" + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + ")"
-      re[4].style.backgroundColor = "rgb" + "(" + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + ")"
-      re[5].style.backgroundColor = "rgb" + "(" + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + "," + parseInt(Math.random() * 255) + ")"
+
+button.addEventListener("click", function(){
+    heading.style.backgroundColor = "orange";
+    coArr = colorPicker();
+    answer = answerNum();
+    squareAssigner();
+    play();
+})
+
+
+function colorPicker(){
+var colorArr = [];
+//chooses random RGB for each square
+for (var i = 0; i < square.length; i++) {
+    colorArr.push("rgb" + "(" + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ")")
+}
+return colorArr;
+}
+
+
+
+function squareAssigner(){
+//gives each square a color
+for (var i = 0; i < coArr.length; i++){
+        square[i].style.backgroundColor = coArr[i]
+}
 
 }
-var numPick = re[index].style.backgroundColor
-var rgb = document.getElementById('rgb')
-rgb.textContent = numPick
 
-for (let i = 0; i < 6; i++) {
-re[i].addEventListener("click", function(){
-    if (numPick !== re[i].style.backgroundColor){
-        re[i].style.backgroundColor = "white"
-    }
-    else {
-        for (let i = 0; i < re.length; i++) {
-            re[i].style.backgroundColor = numPick
+function answerNum(){
+var code = coArr[Math.floor(Math.random() * 6)]
+rgbText = document.getElementById('rgb')
+rgbText.textContent = code
+return code;
+
+}
+
+function play(){
+//changes square background for a right or wrong answer
+for (let i = 0; i < square.length; i++)
+{square[i].addEventListener("click", function()
+    {if (answer !== square[i].style.backgroundColor)
+        {console.log(answer + "is answer" + square[i].style.backgroundColor + "is square")
+        square[i].style.backgroundColor = "black"
+        tagline.textContent = "Try Again!"
         }
+    else {
+        for (let i = 0; i < square.length; i++)
+            {square[i].style.backgroundColor = answer
+            }
+        heading.style.backgroundColor = answer
+        tagline.textContent = "Correct!"
+        button.textContent = "Play Again?"
+         }
     }
-}
 )
-
+}
 }
 
-
-}
-
-randomColor()
+colorPicker();
+answerNum();
+squareAssigner();
+play();
