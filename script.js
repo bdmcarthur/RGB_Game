@@ -8,7 +8,9 @@ var answer = answerNum();
 
 
 button.addEventListener("click", function(){
-    heading.style.backgroundColor = "orange";
+    heading.style.backgroundColor = "#489674";
+    button.textContent = "New Colors";
+    tagline.textContent = ""
     coArr = colorPicker();
     answer = answerNum();
     squareAssigner();
@@ -20,7 +22,7 @@ function colorPicker(){
 var colorArr = [];
 //chooses random RGB for each square
 for (var i = 0; i < square.length; i++) {
-    colorArr.push("rgb" + "(" + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ")")
+    colorArr.push("RGB" + "(" + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ")")
 }
 return colorArr;
 }
