@@ -1,14 +1,14 @@
 
-square = document.querySelectorAll('.square');
-tagline = document.getElementById('tagline');
-heading = document.getElementById('heading');
-button = document.querySelector('button')
+var square = document.querySelectorAll('.square');
+var tagline = document.getElementById('tagline');
+var heading = document.getElementById('heading');
+var button = document.querySelector('button')
 var coArr = colorPicker();
 var answer = answerNum();
 
 
 button.addEventListener("click", function(){
-    heading.style.backgroundColor = "#489674";
+    heading.style.backgroundColor = "#989999";
     button.textContent = "New Colors";
     tagline.textContent = ""
     coArr = colorPicker();
