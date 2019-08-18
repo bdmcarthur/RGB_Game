@@ -23,34 +23,31 @@ var colorArr = [];
 //chooses random RGB for each square
 for (var i = 0; i < square.length; i++) {
     colorArr.push("RGB" + "(" + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ", " + parseInt(Math.random() * 256) + ")")
-}
+    }
 return colorArr;
 }
-
-
 
 function squareAssigner(){
 //gives each square a color
 for (var i = 0; i < coArr.length; i++){
         square[i].style.backgroundColor = coArr[i]
-}
-
+    }
 }
 
 function answerNum(){
 var code = coArr[Math.floor(Math.random() * 6)]
 rgbText = document.getElementById('rgb')
 rgbText.textContent = code
-return code;
+return code.toLowerCase();
 
 }
 
 function play(){
 //changes square background for a right or wrong answer
 for (let i = 0; i < square.length; i++)
-{square[i].addEventListener("click", function()
-    {if (answer !== square[i].style.backgroundColor)
-        {console.log(answer + "is answer" + square[i].style.backgroundColor + "is square")
+{square[i].addEventListener("click", function(){
+        if (answer !== square[i].style.backgroundColor)
+        {console.log(answer + "is answer " + square[i].style.backgroundColor + " is square")
         square[i].style.backgroundColor = "black"
         tagline.textContent = "Try Again!"
         }
